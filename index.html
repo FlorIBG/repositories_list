@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Public repositories</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	</head>
+	<body ng-app='app'>
+		<div class="grid__container" ng-controller='Reposcontroller'>
+			<img class="loader" ng-hide="repoData" src="loader.gif" />
+			<h1 class="text-center">{{userData.name}}</h1>
+			<div class="user__container">
+				<img ng-show='repoData' src="github.png">
+				<a href="{{userData.html_url}}" class="btn btn-default">
+	        		{{userData.login}}                        
+	    		</a>
+			</div>
+			
+			<ul class="repos__list">
+				
+				<li class="repos__item" ng-repeat="repo in repoData">
+					<a class="repos__links" href="{{repo.html_url}}" target="_blank" >
+						{{repo.name}}
+					</a>
+				</li>                                    
+			</ul>	
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>
